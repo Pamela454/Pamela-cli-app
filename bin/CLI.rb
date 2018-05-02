@@ -7,11 +7,14 @@ puts "Please enter the location where you need Urgent Care."
 
 puts "Boston, Cape Cod, or Southeast MA?"
 
-when user input == "Boston"
-  return scraped results from Boston area
-when user input == "Cape Cod"
-  return scraped results from Cape Cod area
-when user input == "Southeast MA"
-  return scraped results from Southeast MA area
+location = gets.chomp
+
+if location == "Boston"
+  puts "scraped results from Boston area"
+elsif location == "Cape Cod"
+  puts "scraped results from Cape Cod area"
+elsif location == "Southeast MA"
+  puts "scraped results from Southeast MA area"
 else
-  return "No results found. Please try again."
+  puts "No results found. Please try again."
+end
