@@ -29,3 +29,7 @@ Rake is another way to run files. Like a bin file.
 Require bundler, the mother of all gems. Then tell it to require
 which requires all gems. This makes sure that the files are
 loaded in the correct order.
+
+:: is a unary operator that allows: constants, instance methods and class
+methods defined within a class or module, to be accessed from anywhere outside
+the class or module.

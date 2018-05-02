@@ -18,3 +18,7 @@ elsif location == "Southeast MA"
 else
   puts "No results found. Please try again."
 end
+
+puts "Would you like additional info on a specific office?"
+
+office = gets.chomp
