@@ -1,0 +1,2 @@
+class UrgentCare::Office
+end
