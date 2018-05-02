@@ -1,0 +1,31 @@
+Find Urgent Care with shortest wait time
+Local Massachusetts facilities
+
+What are the next two things that you need to do?
+
+CLI Interaction
+- Welcome
+- Please provide your Massachusetts location
+- Wait times for closest Urgent Care centers are as follows:
+- Please enter another location, ask to display list, or exit
+
+Medford Physician One
+https://physicianoneurgentcare.com/find-us/locations/ma/medford-urgent-care
+Cape Cod Health
+https://www.capecodhealth.org/patients-visitors/wait-time/
+Dedham
+https://www.afcurgentcare.com/dedham/patient-resources/check-in-online/
+Southeast MA
+https://www.southcoast.org/services/urgent-care/
+Boston Area CareWell - next available appts.
+https://www.carewellurgentcare.com/locations/
+Boston Area AFC Urgent Care- wait times
+https://www.clockwisemd.com/groups/53
+
+Create one dependency that loads all others. Loads all files
+into memory.
+
+Rake is another way to run files. Like a bin file.
+Require bundler, the mother of all gems. Then tell it to require
+which requires all gems. This makes sure that the files are
+loaded in the correct order.
