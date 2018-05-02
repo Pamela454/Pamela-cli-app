@@ -4,7 +4,7 @@ puts("starting")
 require "bundler/setup"
 puts("after bundler")
 
-require "project"
+require "UrgentCare"
 puts("after proj")
 
 # You can add fixtures and/or initialization code here to make experimenting
