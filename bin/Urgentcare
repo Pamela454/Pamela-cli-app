@@ -1,0 +1,7 @@
+#!/usr/bin/env ruby
+
+require_relative '../lib/Urgentcare'
+
+Urgentcare::CLI.new.call
+
+#instantiate new CLI method and use call method on it

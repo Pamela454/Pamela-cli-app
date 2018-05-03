@@ -1,11 +1,11 @@
 
 lib = File.expand_path("../lib", __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require_relative "./UrgentCare/version"
+require_relative "./Urgentcare/version"
 
 Gem::Specification.new do |spec|
-  spec.name          = "UrgentCareCLI"
-  spec.version       = UrgentCare::VERSION
+  spec.name          = "UrgentcareCLI"
+  spec.version       = Urgentcare::VERSION
   spec.authors       = ["PamelaTorres-Rocca"]
   spec.email         = ["pfrieze@gmail.com"]
 

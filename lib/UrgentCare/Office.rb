@@ -1,4 +1,4 @@
-class UrgentCare::Office  #class to collect
+class Urgentcare::Office  #class to collect
   attr_accessor :name, :url, :address, :phone_number
 
   def initialize(name)
@@ -9,6 +9,7 @@ class UrgentCare::Office  #class to collect
   end
 
   #def self.all
+    #include array for each office company
 
   #end
 
@@ -16,15 +17,27 @@ class UrgentCare::Office  #class to collect
 
   #end
 
-  #def scrape_office_site
+  #def scrape_physician_one
 
   #end
 
-  #def address
+  #def cape_cod_health
 
   #end
 
-  #def phone_number
+  #def af_urgent_care
+
+  #end
+
+  #def southcoast
+
+  #end
+
+  #def care_well
+
+  #end
+
+  #def clock_wise
 
   #end
 
