@@ -1,5 +1,4 @@
-#class Urgentcare::Scraper
-#!/usr/bin/env ruby
+class Urgentcare::Scraper
 require 'nokogiri'
 require 'pry'
 require 'open-uri'
@@ -9,11 +8,13 @@ require 'open-uri'
   end
 
   def office_list
-    first_page.css('.et_pb_code_inner').css("strong").text.gsub("Next Available:", " ").gsub("\n", " ")
+    first_page.css('.et_pb_code_inner').css("strong").text.gsub("Next Available:", " ").gsub("\n", " ").split(/,/)
   end
 
   def individual_office
-
+    office_list.each do |o|
+      Urgentcare::Office.new(o)
+    end
   end
 
-#end
+end
