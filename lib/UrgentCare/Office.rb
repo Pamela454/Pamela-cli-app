@@ -13,31 +13,7 @@ class Urgentcare::Office  #class to collect
 
   #end
 
-  #def doc
-
-  #end
-
-  #def scrape_physician_one
-
-  #end
-
-  #def cape_cod_health
-
-  #end
-
-  #def af_urgent_care
-
-  #end
-
-  #def southcoast
-
-  #end
-
-  #def care_well
-
-  #end
-
-  #def clock_wise
+  #def care_well- details- scrapes all care well offices for details
 
   #end
 
