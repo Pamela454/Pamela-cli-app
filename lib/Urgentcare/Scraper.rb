@@ -7,11 +7,11 @@ require 'open-uri'
     @doc = Nokogiri::HTML(open("https://www.carewellurgentcare.com/locations/"))
   end
 
-  def office_list
+  def office_list #converts string to array
     first_page.css('.et_pb_code_inner').css("strong").text.gsub("Next Available:", " ").gsub("\n", " ").split(/,/)
   end
 
-  def individual_office
+  def individual_office #iterates over array and creates new offices and passes in name 
     office_list.each do |o|
       Urgentcare::Office.new(o)
     end
