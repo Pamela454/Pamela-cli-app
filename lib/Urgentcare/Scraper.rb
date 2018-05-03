@@ -9,7 +9,7 @@ require 'open-uri'
   end
 
   def office_list
-    first_page.css('.et_pb_code_inner').css("strong").text.gsub()
+    first_page.css('.et_pb_code_inner').css("strong").text.gsub("Next Available:", " ").gsub("\n", " ")
   end
 
   def individual_office
