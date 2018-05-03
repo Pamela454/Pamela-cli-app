@@ -1,5 +1,6 @@
 require 'pry'
 require 'nokogiri'
+require 'open-uri'
 
 #required by bundler
 module Urgentcare
