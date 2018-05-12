@@ -5,10 +5,8 @@ class Urgentcare::Office  #class to collect
 
   attr_accessor :name, :phone_number, :next_available, :url
 
-  def initialize(name)
+  def initialize(name, url)
     @name = name
-    @phone_number = phone_number
-    @next_available = next_available
     @url = url
     @all << self
   end
@@ -18,20 +16,8 @@ class Urgentcare::Office  #class to collect
     @all
   end
 
-  def name #details- scrapes all care well offices for details, conditional assign operator
-    @name ||= individual_office
-  end
-
-  def next_available
-    @next_available ||= doc.css('.carewellBookNowTime')
-  end
-
-  def phone_number
-    @phone_number ||= doc.css("a")
-  end
-
   def doc
-    @doc ||= Nokogiri::HTML(open(self.url))
+    @doc = Nokogiri::HTML(open(self.url))   #self.url
   end
 
 
