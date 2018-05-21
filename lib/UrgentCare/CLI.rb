@@ -9,22 +9,53 @@ class Urgentcare::CLI   #module UrgentCare, class CLI
 
     puts "Welcome to the Urgent Care CLI"
 
-    puts "Please enter the location where you need Urgent Care."
+    puts "Please chose a location from the following list for Urgentcare."
 
-    puts "Boston, Cape Cod, or Southeast MA?"
+    new_list = Urgentcare::Scraper.new.office_list
+
+    puts new_list
 
     list
+
   end
 
   def list
     location = gets.chomp
 
-    if location == "Boston"
+    if location == "BILLERICA"
       puts "scraped results from Boston area"
-    elsif location == "Cape Cod"
+    elsif location == "CAMBRIDGE FRESH POND"
       puts "scraped results from Cape Cod area"
-    elsif location == "Southeast MA"
+    elsif location == "CAMBRIDGE INMAN"
       puts "scraped results from Southeast MA area"
+    elsif location == "FITCHBURG"
+      puts ""
+    elsif location == "FRAMINGHAM"
+      puts ""
+    elsif location == "LEXINGTON"
+      puts ""
+    elsif location == "MARLBOROUGH"
+      puts ""
+    elsif location == "NEEDHAM"
+      puts ""
+    elsif location == "NORTHBOROUGH"
+      puts ""
+    elsif location == "NORWELL"
+      puts ""
+    elsif location == "PEABODY"
+      puts ""
+    elsif location == "SOMERVILLE"
+      puts ""
+    elsif location == "SOUTH DENNIS"
+      puts ""
+    elsif location == "TEWKSBURY"
+      puts ""
+    elsif location == "WORCESTER GREENWOOD"
+      puts ""
+    elsif location == "WORCESTER LINCOLN"
+      puts ""
+    elsif location == "WARWICK"
+      puts ""
     else
       puts "No results found. Please try again."
     end

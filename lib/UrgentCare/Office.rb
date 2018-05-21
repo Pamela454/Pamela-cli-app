@@ -13,7 +13,7 @@ class Urgentcare::Office  #class to collect
 
   def self.all
     #include array for each office company
-    @all
+    @@all 
   end
 
   def doc

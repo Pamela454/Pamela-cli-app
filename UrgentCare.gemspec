@@ -1,7 +1,7 @@
 
-lib = File.expand_path("../lib", __FILE__)
+lib = File.expand_path("../lib", )
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require_relative "./Urgentcare/version"
+require "./lib/Urgentcare/version"
 
 Gem::Specification.new do |spec|
   spec.name          = "UrgentcareCLI"
@@ -16,7 +16,7 @@ Gem::Specification.new do |spec|
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
   # to allow pushing to a single host or delete this section to allow pushing to any host.
   if spec.respond_to?(:metadata)
-    spec.metadata["allowed_push_host"] = "TODO: Set to 'http://mygemserver.com'"
+    spec.metadata["allowed_push_host"] = ''
   else
     raise "RubyGems 2.0 or newer is required to protect against " \
       "public gem pushes."
@@ -32,7 +32,8 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "bundler", "~> 1.16" #locks gems to current versions
   spec.add_development_dependency "rake", "~> 10.0"    #bundle update to update
   spec.add_development_dependency "rspec", "~> 3.0"
-  spec.add_development_dependency "nokogiri", "~> 1.8.2"
   spec.add_development_dependency "pry", "~> 0.11.3"
-  spec.add_development_dependency "open-uri"
+  #spec.add_development_dependency "open-uri"
+
+  spec.add_dependency "nokogiri", "~> 1.8.2"
 end

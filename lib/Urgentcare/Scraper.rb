@@ -1,4 +1,4 @@
-#class Urgentcare::Scraper
+class Urgentcare::Scraper
 require 'nokogiri'
 require 'pry'
 require 'open-uri' #to work with live website
@@ -62,4 +62,4 @@ end
       Urgentcare::Office.new(name, url)
   end
 
-#end
+end
