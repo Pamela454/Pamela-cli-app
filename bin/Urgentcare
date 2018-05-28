@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 
 require "bundler/setup"  #one dot or two?
-require "Urgentcare"
+require_relative "../lib/Urgentcare"
 
 Urgentcare::CLI.new.call
 

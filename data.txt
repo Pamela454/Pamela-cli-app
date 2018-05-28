@@ -1,0 +1,4 @@
+def get_page #page that lists clinics in Boston and surrounding area
+  @doc = Nokogiri::HTML(open("https://www.carewellurgentcare.com/locations/"))
+end
+get_page 

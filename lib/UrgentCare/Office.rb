@@ -5,20 +5,22 @@ class Urgentcare::Office  #class to collect
 
   attr_accessor :name, :phone_number, :next_available, :url
 
-  def initialize(name, url)
+  @@all = []
+
+  def initialize(name = nil, url = nil, next_available = nil, phone_number = nil)
     @name = name
     @url = url
-    @all << self
+    @next_available = next_available
+    @phone_number = phone_number
+    @@all << self
   end
 
   def self.all
-    #include array for each office company
-    @@all 
+    @@all
   end
 
-  def doc
-    @doc = Nokogiri::HTML(open(self.url))   #self.url
+  def self.clear
+    @@all.clear
   end
-
 
 end
