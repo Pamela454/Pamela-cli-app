@@ -14,114 +14,45 @@ class Urgentcare::CLI   #module UrgentCare, class CLI
 
     puts "Welcome to the Urgent Care CLI"
 
-    puts "Please chose a location from the following list for Urgentcare."
+    puts "Please choose a location from the following list for Urgentcare."
 
-    scrape = Urgentcare::Scraper.new
-
-    scrape.location_list
-
+    @scrape = Urgentcare::Scraper.new
+    @scrape.get_clinics
+    @clinics = Urgentcare::Office.all
+    @clinics.each_with_index do |office, i|
+      puts "#{i + 1}. #{office.name}"
+    end
     list
   end
 
   def list
     location = gets.chomp
+    index = location.to_i - 1
 
-    if location == "BILLERICA"
-      puts ""
-    elsif location == "CAMBRIDGE FRESH POND"
-      puts ""
-    elsif location == "CAMBRIDGE INMAN"
-      puts urls[2]
-    elsif location == "FITCHBURG"
-      puts urls[3]
-    elsif location == "FRAMINGHAM"
-      puts urls[4]
-    elsif location == "LEXINGTON"
-      puts urls[5]
-    elsif location == "MARLBOROUGH"
-      puts urls[6]
-    elsif location == "NEEDHAM"
-      puts urls[7]
-    elsif location == "NORTHBOROUGH"
-      puts urls[8]
-    elsif location == "NORWELL"
-      puts urls[9]
-    elsif location == "PEABODY"
-      puts urls[10]
-    elsif location == "SOMERVILLE"
-      puts urls[11]
-    elsif location == "SOUTH DENNIS"
-      puts urls[12]
-    elsif location == "TEWKSBURY"
-      puts urls[13]
-    elsif location == "WORCESTER GREENWOOD"
-      puts urls[14]
-    elsif location == "WORCESTER LINCOLN"
-      puts urls[15]
-    elsif location == "WARWICK"
-      puts urls[16]
+      the_office = Urgentcare::Office.all
+    if index > -1
+      puts "#{the_office[index].name}"
+      puts "#{the_office[index].phone_number}"
+      puts "https://www.www.carewellurgentcare.com#{the_office[index].url}"
     else
       puts "No results found. Please try again."
     end
-      puts "Would you like additional info on a specific office?"
-
+      puts "Would you like the next available time at a specific office?"
+      puts "If so, please select from the list."
+      @clinics.each_with_index do |office, i|
+        puts "#{i + 1}. #{office.name}"
+      end
       office_details
   end
 
   def office_details
 
     office = gets.chomp
-    if office == "BILLERICA"
-      puts "Phone number: #{Urgentcare::Scraper.new.phone_number[0]}"
-      puts "Next Available: #{Urgentcare::Scraper.new.next_available_time[0]}"
-    elsif office == "CAMBRIDGE FRESH POND"
-      puts "Phone number: #{Urgentcare::Scraper.new.phone_number[1]}"
-      puts "Next Available: #{Urgentcare::Scraper.new.next_available_time[1]}"
-    elsif office == "CAMBRIDGE INMAN"
-      puts "Phone number: #{Urgentcare::Scraper.new.phone_number[2]}"
-      puts "Next Available: #{Urgentcare::Scraper.new.next_available_time[2]}"
-    elsif office == "FITCHBURG"
-      puts "Phone number: #{Urgentcare::Scraper.new.phone_number[3]}"
-      puts "Next Available: #{Urgentcare::Scraper.new.next_available_time[3]}"
-    elsif office == "FRAMINGHAM"
-      puts "Phone number: #{Urgentcare::Scraper.new.phone_number[4]}"
-      puts "Next Available: #{Urgentcare::Scraper.new.next_available_time[4]}"
-    elsif office == "LEXINGTON"
-      puts "Phone number: #{Urgentcare::Scraper.new.phone_number[5]}"
-      puts "Next Available: #{Urgentcare::Scraper.new.next_available_time[5]}"
-    elsif office == "MARLBOROUGH"
-      puts "Phone number: #{Urgentcare::Scraper.new.phone_number[6]}"
-      puts "Next Available: #{Urgentcare::Scraper.new.next_available_time[6]}"
-    elsif office == "NEEDHAM"
-      puts "Phone number: #{Urgentcare::Scraper.new.phone_number[7]}"
-      puts "Next Available: #{Urgentcare::Scraper.new.next_available_time[7]}"
-    elsif office == "NORTHBOROUGH"
-      puts "Phone number: #{Urgentcare::Scraper.new.phone_number[8]}"
-      puts "Next Available: #{Urgentcare::Scraper.new.next_available_time[8]}"
-    elsif office == "NORWELL"
-      puts "Phone number: #{Urgentcare::Scraper.new.phone_number[9]}"
-      puts "Next Available: #{Urgentcare::Scraper.new.next_available_time[9]}"
-    elsif office == "PEABODY"
-      puts "Phone number: #{Urgentcare::Scraper.new.phone_number[10]}"
-      puts "Next Available: #{Urgentcare::Scraper.new.next_available_time[10]}"
-    elsif office == "SOMERVILLE"
-      puts "Phone number: #{Urgentcare::Scraper.new.phone_number[11]}"
-      puts "Next Available: #{Urgentcare::Scraper.new.next_available_time[11]}"
-    elsif office == "SOUTH DENNIS"
-      puts "Phone number: #{Urgentcare::Scraper.new.phone_number[12]}"
-      puts "Next Available: #{Urgentcare::Scraper.new.next_available_time[12]}"
-    elsif office == "TEWKSBURY"
-      puts "Phone number: #{Urgentcare::Scraper.new.phone_number[13]}"
-      puts "Next Available: #{Urgentcare::Scraper.new.next_available_time[13]}"
-    elsif office == "WORCESTER GREENWOOD"
-      puts "Phone number: #{Urgentcare::Scraper.new.phone_number[14]}"
-      puts "Next Available: #{Urgentcare::Scraper.new.next_available_time[14]}"
-    elsif office == "WORCESTER LINCOLN"
-      puts "Phone number: #{Urgentcare::Scraper.new.phone_number[15]}"
-      puts "Next Available: #{Urgentcare::Scraper.new.next_available_time[15]}"
-    elsif office == "WARWICK"
-      puts "Phone number: #{Urgentcare::Scraper.new.phone_number[16]}"
-      puts "Next Available: #{Urgentcare::Scraper.new.next_available_time[16]}"
+    index = office.to_i - 1
+
+    specific_office = Urgentcare::Office.all
+    if index > -1
+      puts "Next Available: #{specific_office[index].next_available}"
     else
       puts "No results found. Please try again."
     end
