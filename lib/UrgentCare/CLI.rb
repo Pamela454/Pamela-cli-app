@@ -13,8 +13,11 @@ class Urgentcare::CLI   #module UrgentCare, class CLI
   def welcome
 
     puts "Welcome to the Urgent Care CLI"
-
-    puts "Please choose a location from the following list for Urgentcare."
+    puts " "
+    puts " "
+    puts "Please choose a number from the following list for details on
+    an Urgent Care location."
+    puts "  "
 
     @scrape = Urgentcare::Scraper.new
     @scrape.get_clinics
@@ -26,44 +29,36 @@ class Urgentcare::CLI   #module UrgentCare, class CLI
   end
 
   def list
+    puts " "
     location = gets.chomp
-    index = location.to_i - 1
-
-      the_office = Urgentcare::Office.all
-    if index > -1
-      puts "#{the_office[index].name}"
-      puts "#{the_office[index].phone_number}"
-      puts "https://www.www.carewellurgentcare.com#{the_office[index].url}"
+    if location == "Exit" ||location == "exit"
+      puts "Thank you and Goodbye!"
     else
-      puts "No results found. Please try again."
-    end
-      puts "Would you like the next available time at a specific office?"
-      puts "If so, please select from the list."
-      @clinics.each_with_index do |office, i|
-        puts "#{i + 1}. #{office.name}"
-      end
+      @index = location.to_i - 1
       office_details
+    end
   end
 
   def office_details
-
-    office = gets.chomp
-    index = office.to_i - 1
-
-    specific_office = Urgentcare::Office.all
-    if index > -1
-      puts "Next Available: #{specific_office[index].next_available}"
+      the_office = Urgentcare::Office.all
+    if @index != "Exit" ||@index != "exit"
+      puts " "
+      puts "Office Name: #{the_office[@index].name}"
+      puts "Office Number: #{the_office[@index].phone_number}"
+      puts "Office URL: https://www.www.carewellurgentcare.com#{the_office[@index].url}"
+      puts "Next Available Time: #{the_office[@index].next_available}"
+      puts " "
     else
       puts "No results found. Please try again."
     end
-      puts "Enter exit to leave program."
-
-      input = gets.chomp
-
-      if office == "Exit" ||office == "exit"
-        puts "Thank you and Goodbye!"
-      else
-        office_details
+      puts "Would you like to select another office from the list?"
+      puts " "
+      @clinics.each_with_index do |office, i|
+        puts "#{i + 1}. #{office.name}"
       end
+      puts " "
+      puts "If not, please type exit."
+      puts " "
+      list
   end
 end
