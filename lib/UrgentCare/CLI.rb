@@ -1,10 +1,4 @@
-#CLI controller
-require 'pry'
-require "./lib/Urgentcare"
-require "./lib/Urgentcare/Scraper"
-require "./lib/Urgentcare/Office"
-
-class Urgentcare::CLI   #module UrgentCare, class CLI
+class Urgentcare::CLI
 
   def call
     welcome
@@ -19,8 +13,7 @@ class Urgentcare::CLI   #module UrgentCare, class CLI
     an Urgent Care location."
     puts "  "
 
-    @scrape = Urgentcare::Scraper.new
-    @scrape.get_clinics
+    Urgentcare::Scraper.new.get_clinics
     @clinics = Urgentcare::Office.all
     @clinics.each_with_index do |office, i|
       puts "#{i + 1}. #{office.name}"

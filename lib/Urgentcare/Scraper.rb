@@ -1,11 +1,4 @@
 class Urgentcare::Scraper
-  require 'nokogiri'
-  require 'pry'
-  require 'open-uri' # to work with live website
-
-  # def initialize
-  #  @url = url
-  # end
 
   def get_page # page that lists clinics in Boston and surrounding area
     @doc = Nokogiri::HTML(open('https://www.carewellurgentcare.com/locations/'))
@@ -20,15 +13,13 @@ class Urgentcare::Scraper
       else
         digits_array.push(location)
       end
-      url_array
-      digits_array
     end
+    merge_arrays(digits_array, url_array)
+  end
+
+  def merge_arrays(digits_array, url_array)
     digits_array[0..16].zip(url_array[0..16]).each_with_index do |office_details, index|
-      #@name = office_details[0].css('strong').text.strip.tr("\n", ' ').gsub('Next Available:', ', ').gsub(' MA, ', ' ').gsub(' MA ,', ' ').gsub(' RI, ', ', ').strip.split(',')
-      #puts "make office index is: #{index} - with name: #{@name}"
-      #if @name != nil && @name.length > 0
         make_office(office_details)
-      #end
     end
   end
 
