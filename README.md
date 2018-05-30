@@ -1,4 +1,4 @@
-# Project
+# UrgentCare
 
 CLI Urgent Care returns current wait times at urgent care centers based on location.
 

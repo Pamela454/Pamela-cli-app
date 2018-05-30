@@ -1,7 +1,4 @@
-class Urgentcare::Office  #class to collect
-  require 'nokogiri'
-  require 'open-uri'
-  require 'pry'
+class Urgentcare::Office  
 
   attr_accessor :name, :phone_number, :next_available, :url
 
