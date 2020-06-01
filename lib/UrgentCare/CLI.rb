@@ -15,6 +15,7 @@ class Urgentcare::CLI
 
     Urgentcare::Scraper.new.get_clinics
     @clinics = Urgentcare::Office.all
+    binding.pry
     @clinics.each_with_index do |office, i|
       puts "#{i + 1}. #{office.name}"
     end

@@ -7,7 +7,7 @@ class Urgentcare::Scraper
   def get_clinics
     url_array = []
     digits_array = []
-    get_page.css('.et_pb_column_1_4').each_with_index do |location, index|
+    get_page.css('.centers-list').each_with_index do |location, index|
       if index.odd?
         url_array.push(location)
       else
