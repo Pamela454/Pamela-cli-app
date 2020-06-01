@@ -38,7 +38,7 @@ class Urgentcare::CLI
       puts " "
       puts "Office Name: #{the_office[@index].name}"
       puts "Office Number: #{the_office[@index].phone_number}"
-      puts "Office URL: https://www.www.carewellurgentcare.com#{the_office[@index].url}"
+      puts "Office URL: https://www.carewellurgentcare.com#{the_office[@index].url}"
       puts "Next Available Time: #{the_office[@index].next_available}"
       puts " "
     else
