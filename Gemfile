@@ -7,3 +7,4 @@ gem "nokogiri"
 gem "pry"
 gem "rake"
 gem 'project'
+gem 'watir'
