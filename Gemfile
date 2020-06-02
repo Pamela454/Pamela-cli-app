@@ -8,4 +8,3 @@ gem "watir"
 gem "pry"
 gem "rake"
 gem 'project'
-gem 'watir'
