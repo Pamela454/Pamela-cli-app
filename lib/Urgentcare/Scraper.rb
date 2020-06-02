@@ -1,7 +1,7 @@
 class Urgentcare::Scraper
 
   def get_page # page that lists clinics in Boston and surrounding area
-    @doc = Nokogiri::HTML(open('https://www.carewellurgentcare.com/locations/'))
+    @doc = Nokogiri::HTML(open('https://www.carewellurgentcare.com/centers/'))
   end
 
   def get_clinics
@@ -25,12 +25,13 @@ class Urgentcare::Scraper
 
   def make_office(office_details)
     office = Urgentcare::Office.new
-    office.name = office_details[0].css('strong').text.strip.tr("\n", ' ').gsub('Next Available:', ', ').gsub(' MA, ', ' ').gsub(' MA ,', ' ').gsub(' RI, ', ', ').strip.split(',')[0]
-    office.url = office_details[1].css('a')[1]['href']
-    office.phone_number = office_details[0].css('a[href]').text
-    doc_d = Nokogiri::HTML(open("https://www.carewellurgentcare.com#{office.url}"))
-    doc_i = doc_d.css('.locat').attr('src').text
-    doc_n = Nokogiri::HTML(open(doc_i.to_s))
-    office.next_available = doc_n.css('.panel-heading').text.strip.gsub("\r\n", ' ').split(',')[0]
+    office.name = office_details[0].css('h2').text
+    office.url = office_details[0].css('a')[2]['href']
+    office.phone_number = office_details[0].css('a[href]').text.delete "Book Telemed AppointmentSchedule AppointmentGet Directions"
+    #doc_d = Nokogiri::HTML(open("https://www.carewellurgentcare.com#{office.url}"))
+    #doc_i = doc_d.css('.locat').attr('src').text
+    #doc_n = Nokogiri::HTML(open(doc_i.to_s))
+    office.next_available = office_details[0].css('strong.FacilityBookNowTime')
+    #doc_n.css('.panel-heading').text.strip.gsub("\r\n", ' ').split(',')[0]
   end
 end
