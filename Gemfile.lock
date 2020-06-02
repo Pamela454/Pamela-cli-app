@@ -39,7 +39,7 @@ PLATFORMS
 
 DEPENDENCIES
   UrgentcareCLI!
-  bundler (~> 2.1.4)
+  bundler
   nokogiri
   project
   pry
