@@ -1,6 +1,7 @@
 require 'pry'
 require 'nokogiri'
 require 'open-uri'
+require 'watir'
 
 require_relative "./Urgentcare/CLI"
 require_relative "./Urgentcare/version"  #why was this not a relative path?

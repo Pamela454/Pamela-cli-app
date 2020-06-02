@@ -4,6 +4,14 @@ class Urgentcare::Scraper
     @doc = Nokogiri::HTML(open('https://www.carewellurgentcare.com/centers/'))
   end
 
+  def get_waittime
+    binding.pry 
+    browser = Watir::Browser.new
+    browser.goto('https://www.carewellurgentcare.com/centers/')
+    binding.pry 
+    waittime = browser.css('strong.FacilityBookNowTime')
+  end
+
   def get_clinics
     url_array = []
     digits_array = []
@@ -31,7 +39,7 @@ class Urgentcare::Scraper
     #doc_d = Nokogiri::HTML(open("https://www.carewellurgentcare.com#{office.url}"))
     #doc_i = doc_d.css('.locat').attr('src').text
     #doc_n = Nokogiri::HTML(open(doc_i.to_s))
-    office.next_available = office_details[0].css('strong.FacilityBookNowTime')
+    office.next_available = get_waittime
     #doc_n.css('.panel-heading').text.strip.gsub("\r\n", ' ').split(',')[0]
   end
 end
