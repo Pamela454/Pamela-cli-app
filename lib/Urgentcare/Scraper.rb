@@ -1,9 +1,11 @@
 class Urgentcare::Scraper
 
+  @@browser = Watir::Browser.new :chrome, headless: true 
+  @@clinic_page = @@browser.goto('https://www.carewellurgentcare.com/centers/')
+
   def get_page # page that lists clinics in Boston and surrounding area
-    browser = Watir::Browser.new :chrome, headless: true 
-    browser.goto('https://www.carewellurgentcare.com/centers/')
-    doc = browser.div(id: 'et-main-area').wait_until(&:present?)
+    @@clinic_page
+    doc = @@browser.div(id: 'et-main-area').wait_until(&:present?)
     inner = Nokogiri::HTML(doc.inner_html)
   end
 
@@ -15,9 +17,8 @@ class Urgentcare::Scraper
   end
     
   def get_waittime #retrieve waittime and add to new office model 
-    browser = Watir::Browser.new :chrome, headless: true 
-    browser.goto('https://www.carewellurgentcare.com/centers/')
-    js_doc = browser.element(css: '.FacilityBookNowTime').wait_until(&:present?)
+    @@clinic_page
+    js_doc = @@browser.element(css: '.FacilityBookNowTime').wait_until(&:present?)
     inner = Nokogiri::HTML(js_doc.inner_html)
   end
 
