@@ -48,6 +48,7 @@ PLATFORMS
 DEPENDENCIES
   UrgentcareCLI!
   bundler (~> 2.1.4)
+  capybara (~> 2.7, >= 2.7.1)
   nokogiri
   project
   pry
