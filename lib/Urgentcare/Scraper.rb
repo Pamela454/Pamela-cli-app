@@ -12,21 +12,22 @@ class Urgentcare::Scraper
   def get_clinics
     new_page = get_page.css('.centers-list')
     new_page.each_with_index do |office_details, index|
-        make_office(office_details)
+        make_office(office_details, index)
     end
   end
     
   def get_waittime #retrieve waittime and add to new office model 
     #@@clinic_page
-    js_doc = @@browser.spans(:class => '.FacilityBookNowTime').wait_until(&:present?)
+    @@clinic_page
+    js_doc = @@browser.div(id: 'page-container').wait_until(&:present?) 
     inner = Nokogiri::HTML(js_doc.inner_html)
   end
 
-  def make_office(office_details)
+  def make_office(office_details, index)
     office = Urgentcare::Office.new
     office.name = office_details.css('h2').text
     office.url = office_details.css('a')[2]['href']
     office.phone_number = office_details.css('a[href]').text.delete "Book Telemed AppointmentSchedule AppointmentGet Directions"
-    office.next_available = get_waittime.css('p').text
+    office.next_available = get_waittime.css('strong')[index].text
   end
 end
