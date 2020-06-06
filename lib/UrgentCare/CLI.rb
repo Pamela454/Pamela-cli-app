@@ -36,11 +36,14 @@ class Urgentcare::CLI
       the_office = Urgentcare::Office.all
     if @index != "Exit" ||@index != "exit"
       puts " "
+      puts "---"
       puts "Office Name: #{the_office[@index].name}"
       puts "Office Number: #{the_office[@index].phone_number}"
       puts "Office URL: https://www.carewellurgentcare.com#{the_office[@index].url}"
       puts "#{the_office[@index].next_available}"
+      puts "---"
       puts " "
+
     else
       puts "No results found. Please try again."
     end
