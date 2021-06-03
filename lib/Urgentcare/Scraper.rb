@@ -1,6 +1,10 @@
 class Urgentcare::Scraper
 
-  @@browser = Watir::Browser.new :chrome, headless: true 
+  #Selenium::WebDriver.logger.level = :debug
+  client = Selenium::WebDriver::Remote::Http::Default.new
+  client.read_timeout = 300 # seconds – default is 60
+
+  @@browser = Watir::Browser.new :chrome, headless: true, http_client: client
   @@clinic_page = @@browser.goto('https://www.carewellurgentcare.com/centers/')
 
   def get_page # page that lists clinics in Boston and surrounding area
