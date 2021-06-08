@@ -1,13 +1,13 @@
 # UrgentCare
 
-CLI Urgent Care returns current wait times at urgent care centers based on location.
+CLI Urgent Care is a Command Line Interface application that returns current wait times at Carewell Urgent Care centers for towns in Massachusetts. Urgent care is usually needed quickly but no serious enough to require an emergency room visit. This uses the Nokogiri and Watir gems to scrape information from the website. 
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'UrgentcareCLI', '~> 0.1.0'
+gem 'UrgentcareCLI', '~> 0.1.1'
 ```
 
 And then execute:
@@ -20,7 +20,7 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+TODO: Run ./bin/Urgentcare to start the application. Select a town number from the menu to see more detailed information about that location. The detailed information gives the name, phone number, address, and earliest available appointment time at that location. 
 
 ## Development
 

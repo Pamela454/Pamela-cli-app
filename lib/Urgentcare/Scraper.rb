@@ -23,7 +23,7 @@ class Urgentcare::Scraper
 
   @@browser = Watir::Browser.new :chrome, headless: true, http_client: @@client
   logInfo("location 4")
-
+#decrease loading page time 
   send_cmd(@@browser.driver, "Network.setBlockedURLs", {'urls': ["*careuc.netmng.com*"]})
   send_cmd(@@browser.driver, "Network.enable")
   logInfo("location 4a")
