@@ -14,6 +14,7 @@ class Urgentcare::CLI
     puts "  "
 
     Urgentcare::Scraper.new.get_clinics
+#    binding.pry
     @clinics = Urgentcare::Office.all
     @clinics.each_with_index do |office, i|
       puts "#{i + 1}. #{office.name}"
@@ -39,8 +40,8 @@ class Urgentcare::CLI
       puts "---"
       puts "Office Name: #{the_office[@index].name}"
       puts "Office Number: #{the_office[@index].phone_number}"
-      puts "Office URL: https://www.carewellurgentcare.com#{the_office[@index].url}"
-      puts "#{the_office[@index].next_available}"
+      puts "Office URL: #{the_office[@index].url}"
+      puts "Office Next Available Appointment: #{the_office[@index].next_available}"
       puts "---"
       puts " "
 
