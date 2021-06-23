@@ -1,6 +1,6 @@
 # UrgentCare
 
-CLI Urgent Care is a Command Line Interface application that returns current wait times at Carewell Urgent Care centers for towns in Massachusetts. Urgent care is usually needed quickly but no serious enough to require an emergency room visit. This uses the Nokogiri and Watir gems to scrape information from the website. 
+CLI Urgent Care is a Command Line Interface application that returns current wait times at Carewell Urgent Care centers for towns in Massachusetts. COVID-19 testing available at appointments at all locations. Urgent care is usually needed quickly but not serious enough to require an emergency room visit. This uses the Nokogiri and Watir gems to scrape information from the website. 
 
 ## Installation
 
