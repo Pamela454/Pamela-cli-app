@@ -5,7 +5,7 @@ class Urgentcare::CLI
   end
 
   def welcome
-
+    #puts displays with a new line 
     puts "Welcome to the Urgent Care CLI"
     puts " "
     puts " "

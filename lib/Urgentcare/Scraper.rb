@@ -1,11 +1,11 @@
 class Urgentcare::Scraper
 
-  def self.logInfo(message)
-    output = "%s %s" %  [message, Time.now.strftime("%T")]
+  #def self.logInfo(message)
+    #output = "%s %s" %  [message, Time.now.strftime("%T")]
     #puts output
-  end
+  #end 
 
-  def self.send_cmd(driver, cmd, params={})
+  def self.send_cmd(driver, cmd, params={})  #method by Hernando Torres- Rocca
     bridge = driver.send(:bridge)
     resource = "session/#{bridge.session_id}/chromium/send_command_and_get_result"
     response = bridge.http.call(:post, resource, {'cmd':cmd, 'params': params})
@@ -13,37 +13,37 @@ class Urgentcare::Scraper
     return response[:value]
   end
 
-  logInfo("location 1")
+  #logInfo("location 1")
   #Selenium::WebDriver.logger.level = :debug
 
   @@client = Selenium::WebDriver::Remote::Http::Default.new
-  logInfo("location 2")
+  #logInfo("location 2")
   @@client.read_timeout = 3000 # seconds – default is 60
-  logInfo("location 3")
+  #logInfo("location 3")
 
   @@browser = Watir::Browser.new :chrome, headless: true, http_client: @@client
-  logInfo("location 4")
+  #logInfo("location 4")
 #decrease loading page time 
-  send_cmd(@@browser.driver, "Network.setBlockedURLs", {'urls': ["*careuc.netmng.com*"]})
-  send_cmd(@@browser.driver, "Network.enable")
-  logInfo("location 4a")
+  send_cmd(@@browser.driver, "Network.setBlockedURLs", {'urls': ["*careuc.netmng.com*"]}) #url pending when page loads
+  send_cmd(@@browser.driver, "Network.enable")     
+  #logInfo("location 4a")
 
 
   @@clinic_page = @@browser.goto('https://www.carewellurgentcare.com/centers/')
-  logInfo("location 5")
+  #logInfo("location 5")
 
   def get_page # page that lists clinics in Boston and surrounding area
-    self.class.logInfo("getPage")
+    #self.class.logInfo("getPage")
     #@@clinic_page
     doc = @@browser.div(id: 'et-main-area').wait_until(&:present?)
     inner = Nokogiri::HTML(doc.inner_html)
   end
 
   def get_clinics #called first in CLI
-    self.class.logInfo("get clinics")
+    #self.class.logInfo("get clinics")
     new_page = get_page.css('.centers-list')
     new_page.each_with_index do |office_details, index|
-        self.class.logInfo("new page loop")
+        #self.class.logInfo("new page loop")
         make_office(office_details, index)
         url = office_details.css('a')[2]['href']
         get_waittime(url)
@@ -67,7 +67,7 @@ class Urgentcare::Scraper
   end
 
   def make_office(office_details, index)
-    self.class.logInfo("make office")
+    #self.class.logInfo("make office")
 
     office = Urgentcare::Office.new
     office.name = office_details.css('h2').text
