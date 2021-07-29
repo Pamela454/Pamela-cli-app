@@ -1,5 +1,7 @@
 require "bundler/setup"
 require "Urgentcare"
+require_relative './lib/UrgentCare/Office.rb'
+
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
