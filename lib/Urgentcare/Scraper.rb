@@ -40,10 +40,8 @@ class Urgentcare::Scraper
   end
 
   def get_clinics #called first in CLI
-    #self.class.logInfo("get clinics")
     new_page = get_page.css('.centers-list')
     new_page.each_with_index do |office_details, index|
-        #self.class.logInfo("new page loop")
         make_office(office_details, index)
         url = office_details.css('a')[2]['href']
         get_waittime(url)
@@ -51,7 +49,6 @@ class Urgentcare::Scraper
   end
     
   def get_waittime(url) #retrieve waittime and add to new office model 
-    self.class.logInfo("get waittime")
 
 #    @@clinic_page
 #    @@new_browser = Watir::Browser.new :chrome, headless: false, http_client: @@client
