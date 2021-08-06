@@ -11,11 +11,12 @@ RSpec.describe Urgentcare do
   #end
 end
 
+#need to mock instead of actually calling welcome 
 RSpec.describe Urgentcare::CLI do 
   let(:cli_instance) { described_class.new }
   describe '#call' do 
     it 'should call the method welcome' do 
-      expect { cli_instance.call }.to receive(:welcome)
+      expect(cli_instance.call).to receive(:welcome)
     end
   end
 end
