@@ -1,5 +1,8 @@
 require './lib/UrgentCare/Office.rb'
 
+#test stubs help with inputs
+#mock objects help with outputs 
+
 RSpec.describe Urgentcare do  
   it "has a version number" do
     expect(Urgentcare::VERSION).not_to be nil
@@ -13,10 +16,24 @@ end
 
 #need to mock instead of actually calling welcome 
 RSpec.describe Urgentcare::CLI do 
+
   let(:cli_instance) { described_class.new }
-  describe '#call' do 
+
+  describe '#call' do #need mock welcome method to call 
     it 'should call the method welcome' do 
+      welcome_method = double()
       expect(cli_instance.call).to receive(:welcome)
+    end
+#welcome puts out a message mock get_clinics method 
+#stub to send data 
+  #it 'puts out welcome message' do 
+    #mock = 
+  #end
+
+    it 'displays message if user exits' do 
+   #let(:cli_instance) { described_class.new }
+      allow(:cli_instance.list).to receive(exit)
+      expect(:cli_instance.list).to eq("Thank you and Goodbye!")
     end
   end
 end
