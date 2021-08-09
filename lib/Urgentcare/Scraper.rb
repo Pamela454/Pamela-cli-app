@@ -42,7 +42,6 @@ class Urgentcare::Scraper
     js_doc = @@browser.iframe.wait_until(&:present?) 
     if  js_doc.button(data_id: "timeSelector").exists? 
       @wait_time = js_doc.button(data_id: "timeSelector").text.gsub("\n", " ")
-      binding.pry 
       Urgentcare::Office.all.last.next_available = @wait_time
     elsif js_doc.element(tag_name: 'h3').exists?  
       @wait_time = js_doc.element(tag_name: 'h3').text 
@@ -63,6 +62,5 @@ binding.pry
       office.url = office_details.css('a')[2][name="href"]
     end
     office.phone_number = office_details.css('a[href]').text.gsub("Get DirectionsBook Urgent Care Appointment", " ")
-    office.next_available = @wait_time 
   end
 end  
