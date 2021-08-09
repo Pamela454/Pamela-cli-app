@@ -8,8 +8,8 @@ class Urgentcare::Scraper
     return response[:value]
   end
 
-
-  @@client = Selenium::WebDriver::Remote::Http::Default.new
+#@ instance variable 
+  @@client = Selenium::WebDriver::Remote::Http::Default.new #class variable 
   @@client.read_timeout = 3000 # seconds – default is 60
 
   @@browser = Watir::Browser.new :chrome, headless: false, http_client: @@client
@@ -38,19 +38,22 @@ class Urgentcare::Scraper
   end
     
   def get_waittime(url) #retrieve waittime and add to new office model 
-    @@browser.goto(url)
+    @@browser.goto(url) 
     js_doc = @@browser.iframe.wait_until(&:present?) 
-binding.pry
     if  js_doc.button(data_id: "timeSelector").exists? 
       @wait_time = js_doc.button(data_id: "timeSelector").text.gsub("\n", " ")
-      Urgentcare::Office.all[0].next_available = @wait_time #adding it to the next store instead of current 
+      binding.pry 
+      Urgentcare::Office.all.last.next_available = @wait_time
     elsif js_doc.element(tag_name: 'h3').exists?  
       @wait_time = js_doc.element(tag_name: 'h3').text 
+      Urgentcare::Office.all.last.next_available = @wait_time
     else
       @wait_time = "No time available"
+      Urgentcare::Office.all.last.next_available = @wait_time
     end
   end
 
+binding.pry 
   def make_office(office_details, index)
     office = Urgentcare::Office.new
     office.name = office_details.css('h2').text
