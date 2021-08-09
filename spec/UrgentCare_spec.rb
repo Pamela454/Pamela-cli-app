@@ -16,19 +16,12 @@ end
 
 #need to mock instead of actually calling welcome 
 RSpec.describe Urgentcare::CLI do 
+   let(:cli_instance) { Urgentcare::CLI.new }
+   let(:welcom) { double(name: "Called")}
 
-  let(:cli_instance) { described_class.new }
-
-  describe '#call' do #need mock welcome method to call 
-    it 'should call the method welcome' do 
-      welcome_method = double()
-      expect(cli_instance.call).to receive(:welcome)
-    end
-#welcome puts out a message mock get_clinics method 
-#stub to send data 
-  #it 'puts out welcome message' do 
-    #mock = 
-  #end
+   it "calls the welcome method" do
+    expect(welcome).to receive().with().and_return("Welcome Called")   
+   end
 
     it 'displays message if user exits' do 
    #let(:cli_instance) { described_class.new }

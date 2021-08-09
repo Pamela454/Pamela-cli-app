@@ -12,7 +12,7 @@ class Urgentcare::Scraper
   @@client = Selenium::WebDriver::Remote::Http::Default.new #class variable 
   @@client.read_timeout = 3000 # seconds – default is 60
 
-  @@browser = Watir::Browser.new :chrome, headless: false, http_client: @@client
+  @@browser = Watir::Browser.new :chrome, headless: true, http_client: @@client
   send_cmd(@@browser.driver, "Network.setBlockedURLs", {'urls': ["*careuc.netmng.com*"]}) #url pending when page loads
   send_cmd(@@browser.driver, "Network.enable")     
 
@@ -52,7 +52,6 @@ class Urgentcare::Scraper
     end
   end
 
-binding.pry 
   def make_office(office_details, index)
     office = Urgentcare::Office.new
     office.name = office_details.css('h2').text
