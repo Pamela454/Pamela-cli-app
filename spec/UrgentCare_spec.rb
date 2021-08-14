@@ -16,11 +16,11 @@ end
 
 #need to mock instead of actually calling welcome 
 RSpec.describe Urgentcare::CLI do 
-   let(:cli_instance) { Urgentcare::CLI.new }
-   let(:welcom) { double(name: "Called")}
 
    it "calls the welcome method" do
-    expect(welcome).to receive().with().and_return("Welcome Called")   
+    cliInstance = Urgentcare::CLI.new
+    expect(cliInstance).to receive(:welcome).once
+    cliInstance.call
    end
 
     it 'displays message if user exits' do 
@@ -28,7 +28,6 @@ RSpec.describe Urgentcare::CLI do
       allow(:cli_instance.list).to receive(exit)
       expect(:cli_instance.list).to eq("Thank you and Goodbye!")
     end
-  end
 end
 
  #validate that a new object is saved with appropriate attributes
