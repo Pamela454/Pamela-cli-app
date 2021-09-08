@@ -17,16 +17,17 @@ end
 #need to mock instead of actually calling welcome 
 RSpec.describe Urgentcare::CLI do 
 
-   it "calls the welcome method" do
-    cliInstance = Urgentcare::CLI.new
-    expect(cliInstance).to receive(:welcome).once
-    cliInstance.call
-   end
+    it "calls the welcome method" do
+     cliInstance = Urgentcare::CLI.new
+     expect(cliInstance).to receive(:welcome).once
+     cliInstance.call
+    end
 
     it 'displays message if user exits' do 
       cliInstance = Urgentcare::CLI.new
-      allow(:cliInstance.list).to receive(exit)
-      expect(:cliInstance.list).to eq("Thank you and Goodbye!")
+      allow(:cliInstance).to receive(:list)
+      allow($stdout).to receive(:puts) #receive input from user 
+      expect(:list("exit")).to eq("Thank you and Goodbye!")
     end
 end
 
