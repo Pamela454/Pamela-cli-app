@@ -24,9 +24,9 @@ RSpec.describe Urgentcare::CLI do
    end
 
     it 'displays message if user exits' do 
-      cli_instance = Urgentcare::CLI.new
-      allow(:cli_instance.list).to receive(exit)
-      expect(:cli_instance.list).to eq("Thank you and Goodbye!")
+      cliInstance = Urgentcare::CLI.new
+      allow(:cliInstance.list).to receive(exit)
+      expect(:cliInstance.list).to eq("Thank you and Goodbye!")
     end
 end
 

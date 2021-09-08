@@ -9,7 +9,7 @@ class Urgentcare::Office
     @url = url
     @next_available = next_available
     @phone_number = phone_number
-    @@all << self
+    self.class.all << self #the class of this instance. abstracted away use of variable. 
   end
 
   def self.all
@@ -17,7 +17,7 @@ class Urgentcare::Office
   end
 
   def self.clear
-    @@all.clear
+    self.class.all.clear #abstract away use of variable 
   end
 
 end
