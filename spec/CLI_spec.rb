@@ -23,9 +23,10 @@ RSpec.describe Urgentcare::CLI do
 
     #want to receive message that is a response to user entry of exit 
     it 'displays message if user exits' do 
-      allow(:cliInstance).to receive(:list)
+      allow(cliInstance.welcome).to receive(:list).once 
       #expect(:list("exit")).to eq("Thank you and Goodbye!")
     end
+
 end
 
 #check that it retrives list 
