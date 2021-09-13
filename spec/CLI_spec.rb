@@ -27,7 +27,10 @@ RSpec.describe Urgentcare::CLI do
   		@url="https://www.carewellurgentcare.com/urgent-care-appointment-form-billerica/"
  		] }
      scraper = double(Urgentcare::Scraper)
-     scraper.stub(:get_clinics) { @url = "https://www.carewellurgentcare.com/urgent-care-appointment-form-billerica/"}
+     scraper.stub(:get_clinics) { [@name="Billerica",
+  		@next_available="No Appts Avail-please check back soon",
+  		@phone_number="(617) 804-6293 ", 
+  		@url = "https://www.carewellurgentcare.com/urgent-care-appointment-form-billerica/"] }
      cliInstance.welcome
      expect(output.string).to include("Welcome to the Urgent Care CLI")
     end

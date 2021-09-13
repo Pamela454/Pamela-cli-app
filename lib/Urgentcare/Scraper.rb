@@ -24,7 +24,7 @@ class Urgentcare::Scraper
     inner = Nokogiri::HTML(doc.inner_html)  #return value of the method 
   end
 
-  def get_clinics #called first in CLI
+  def get_offices #called first in CLI
     new_page = get_page.css('.centers-list')
     new_page.each_with_index do |office_details, index|
         make_office(office_details, index)

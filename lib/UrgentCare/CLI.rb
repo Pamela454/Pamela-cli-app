@@ -13,7 +13,7 @@ class Urgentcare::CLI
     an Urgent Care location."
     puts "  "
 
-    Urgentcare::Scraper.new.get_clinics
+    Urgentcare::Scraper.new.get_offices 
     @clinics = Urgentcare::Office.all
     @clinics.each_with_index do |office, i|
       puts "#{i + 1}. #{office.name}"
