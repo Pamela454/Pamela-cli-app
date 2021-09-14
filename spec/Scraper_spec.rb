@@ -1,5 +1,5 @@
 require './lib/UrgentCare/Scraper.rb'
-require './lib/UrgentCare/html_site.html'
+require './spec/html_site.html'
 
 RSpec.describe Urgentcare::CLI do 
 

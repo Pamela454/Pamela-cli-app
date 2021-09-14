@@ -9,9 +9,6 @@ RSpec.describe Urgentcare::CLI do
 
 	let!(:output) { StringIO.new }
 	let!(:cliInstance) {Urgentcare::CLI.new}
-	#need a double for the scraper class
-	#need double for the office class 
-
 
     it "calls the welcome method" do
      expect(cliInstance).to receive(:welcome).once
