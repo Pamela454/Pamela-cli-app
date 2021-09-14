@@ -8,14 +8,12 @@ class Urgentcare::Scraper
     return response[:value]
   end
 
-#@ instance variable 
   @@client = Selenium::WebDriver::Remote::Http::Default.new #class variable 
   @@client.read_timeout = 3000 # seconds – default is 60
 
   @@browser = Watir::Browser.new :chrome, headless: true, http_client: @@client
   send_cmd(@@browser.driver, "Network.setBlockedURLs", {'urls': ["*careuc.netmng.com*"]}) #url pending when page loads
   send_cmd(@@browser.driver, "Network.enable")     
-
 
   @@clinic_page = @@browser.goto('https://www.carewellurgentcare.com/centers/')
 

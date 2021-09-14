@@ -16,25 +16,11 @@ RSpec.describe Urgentcare::CLI do
     end
 
     it "prints a welcome message" do 
-     office = double(Urgentcare::Office)
-     office.stub(:all) { [
-     	@name="Billerica",
-  		@next_available="No Appts Avail-please check back soon",
-  		@phone_number="(617) 804-6293 ",
-  		@url="https://www.carewellurgentcare.com/urgent-care-appointment-form-billerica/"
- 		] }
-     scraper = double(Urgentcare::Scraper)
-     scraper.stub(:get_clinics) { [@name="Billerica",
-  		@next_available="No Appts Avail-please check back soon",
-  		@phone_number="(617) 804-6293 ", 
-  		@url = "https://www.carewellurgentcare.com/urgent-care-appointment-form-billerica/"] }
-     cliInstance.welcome
-     expect(output.string).to include("Welcome to the Urgent Care CLI")
+     expect(cliInstance.welcome).to output("Welcome to the Urgent Care CLI").to_stdout
     end
 
     #want to receive message that is a response to user entry of exit 
     it 'displays message if user exits' do 
-      allow(cliInstance.welcome).to receive(:list).once 
       #expect(:list("exit")).to eq("Thank you and Goodbye!")
     end
 

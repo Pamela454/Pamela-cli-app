@@ -14,7 +14,7 @@ class Urgentcare::CLI
     welcome
   end
 
-  def welcome
+  def welcome()
     #puts displays with a new line 
     puts "Welcome to the Urgent Care CLI"
     puts " "
@@ -33,18 +33,20 @@ class Urgentcare::CLI
     list
   end
 
-  def list
+  def list()
     puts " "
     location = gets.chomp
     if location == "Exit" ||location == "exit"
       puts "Thank you and Goodbye!"
-    else
+    elsif
       @index = location.to_i - 1
       office_details
+    else 
+       puts "Invalid response"
     end
   end
 
-  def office_details
+  def office_details()
     if @index != "Exit" ||@index != "exit"
       puts " "
       puts "---"
