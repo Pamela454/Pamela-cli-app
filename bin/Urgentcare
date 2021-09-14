@@ -3,7 +3,6 @@
 require "bundler/setup"  #one dot or two?
 require_relative "../lib/Urgentcare"
 
-Urgentcare::Scraper.new
 Urgentcare::CLI.new.call
 
 #instantiate new CLI method and use call method on it

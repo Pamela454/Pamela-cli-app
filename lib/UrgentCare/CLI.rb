@@ -14,7 +14,7 @@ class Urgentcare::CLI
     welcome
   end
 
-  def welcome()
+  def welcome
     #puts displays with a new line 
     puts "Welcome to the Urgent Care CLI"
     puts " "
@@ -22,11 +22,26 @@ class Urgentcare::CLI
     puts "Please choose a number from the following list for details on
     an Urgent Care location."
     puts "  "
+    office_list 
+  end
+
+  def office_list
     @scraper.get_offices 
     @offices.each_with_index do |office, i|
       puts "#{i + 1}. #{office.name}"
     end
     list
+  end
+
+  def list
+    puts " "
+    location = gets.chomp
+    if location == "Exit" ||location == "exit"
+      puts "Thank you and Goodbye!"
+    else
+      @index = location.to_i - 1
+      office_details
+    end
   end
 
   def office_details
@@ -52,17 +67,6 @@ class Urgentcare::CLI
       puts "If not, please type exit."
       puts " "
       list
-  end
-
-  def list
-    puts " "
-    location = gets.chomp
-    if location == "Exit" ||location == "exit"
-      puts "Thank you and Goodbye!"
-    else
-      @index = location.to_i - 1
-      office_details
-    end
   end
 
 end
