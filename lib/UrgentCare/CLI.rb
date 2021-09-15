@@ -5,7 +5,7 @@ class Urgentcare::CLI
 #dependency injection to make code more testable
 #remove strict dependency on other classes 
 
-  def initialize(scraper: Urgentcare::Scraper.new, offices: Urgentcare::Office.all )
+  def initialize(scraper: Urgentcare::Scraper.new, offices: Urgentcare::Office.all)
     @scraper = scraper
     @offices = offices
   end

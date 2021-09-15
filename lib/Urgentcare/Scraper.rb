@@ -1,5 +1,9 @@
 class Urgentcare::Scraper
 
+  def initialize(office = Urgentcare::Office)
+    @office = office 
+  end
+
   def self.send_cmd(driver, cmd, params={})  #method by Hernando Torres- Rocca
     bridge = driver.send(:bridge)
     resource = "session/#{bridge.session_id}/chromium/send_command_and_get_result"
@@ -35,6 +39,7 @@ class Urgentcare::Scraper
           url = office_details.css('a')[2][name="href"]
         end
         get_appttime(url)
+        @off = @office.new 
         make_office(office_details, index) 
     end
   end
@@ -52,15 +57,14 @@ class Urgentcare::Scraper
   end
 
   def make_office(office_details, index)
-    office = Urgentcare::Office.new
-    office.name = office_details.css('h2').text
+      @off.name = office_details.css('h2').text
     if office_details.css('a').length > 3
-      office.url = office_details.css('a')[3][name="href"]
+      @off.url = office_details.css('a')[3][name="href"]
     else
-      office.url = office_details.css('a')[2][name="href"]
+      @off.url = office_details.css('a')[2][name="href"]
     end
-    office.next_available = @wait_time
-    office.phone_number = office_details.css('a[href]').text.gsub("Get DirectionsBook Urgent Care Appointment", " ")
+    @off.next_available = @wait_time
+    @off.phone_number = office_details.css('a[href]').text.gsub("Get DirectionsBook Urgent Care Appointment", " ")
   end
 
 end  
