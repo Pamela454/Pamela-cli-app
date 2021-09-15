@@ -26,7 +26,7 @@ class Urgentcare::CLI
   end
 
   def office_list
-    @scraper.get_offices 
+    @scraper.get_office_list
     @offices.each_with_index do |office, i|
       puts "#{i + 1}. #{office.name}"
     end

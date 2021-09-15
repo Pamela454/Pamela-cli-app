@@ -9,6 +9,7 @@ RSpec.describe Urgentcare::CLI do
 
 	let!(:output) { StringIO.new }
 	let!(:cliInstance) {Urgentcare::CLI.new}
+	let!(:office_list) { spy('') }
 
     it "calls the welcome method" do
      expect(cliInstance).to receive(:welcome).once
@@ -16,6 +17,7 @@ RSpec.describe Urgentcare::CLI do
     end
 
     it "prints a welcome message" do 
+     expect(cliInstance).to receive(office_list).once 
      expect(cliInstance.welcome).to output("Welcome to the Urgent Care CLI").to_stdout
     end
 

@@ -3,6 +3,24 @@ require './spec/html_site.html'
 
 RSpec.describe Urgentcare::CLI do 
 
+	htnlfile = Nokogiri::HTML.parse(
+    File.open("./spec/html_site.html"))
+
+	it 'gets html from url' do
+		
+	end
+
+	it 'gets clinic data' do
+		
+	end
+
+	it 'gets current appointment time' do
+		
+	end
+
+	it 'creates a new office object' do 
+
+	end
 
 end
 
