@@ -7,9 +7,8 @@ require 'stringio'
 
 RSpec.describe Urgentcare::CLI do 
 
-	let!(:output) { StringIO.new }
 	let!(:cliInstance) {Urgentcare::CLI.new}
-	let!(:office_list) { spy('') }
+	subject {Urgentcare::CLI.new}
 
     it "calls the welcome method" do
      expect(cliInstance).to receive(:welcome).once
@@ -17,8 +16,10 @@ RSpec.describe Urgentcare::CLI do
     end
 
     it "prints a welcome message" do 
-     expect(cliInstance).to receive(office_list).once 
-     expect(cliInstance.welcome).to output("Welcome to the Urgent Care CLI").to_stdout
+     allow(cliInstance).to receive(:office_list).and_return("An office list")
+     expect(cliInstance).to receive(:office_list).once 
+     
+     expect { cliInstance.welcome }.to output("Welcome to the Urgent Care CLI\n \n \nPlease choose a number from the following list for details on\n    an Urgent Care location.\n  \n").to_stdout 
     end
 
     #want to receive message that is a response to user entry of exit 
