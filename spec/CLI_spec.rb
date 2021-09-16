@@ -18,16 +18,18 @@ RSpec.describe Urgentcare::CLI do
     it "prints a welcome message" do 
      allow(cliInstance).to receive(:office_list).and_return("An office list")
      expect(cliInstance).to receive(:office_list).once 
-     
-     expect { cliInstance.welcome }.to output("Welcome to the Urgent Care CLI\n \n \nPlease choose a number from the following list for details on\n    an Urgent Care location.\n  \n").to_stdout 
+     expect { cliInstance.welcome }.to output(" \n \nWelcome to the Urgent Care CLI\n \n \n \n").to_stdout 
     end
 
-    #want to receive message that is a response to user entry of exit 
-    it 'displays message if user exits' do 
-      #expect(:list("exit")).to eq("Thank you and Goodbye!")
+    it "displays message if user exits" do 
+     allow(cliInstance).to receive(:office_details).and_return("Office Details")
+     allow(cliInstance.list).to receive(:location).and_return("exit")
+    	binding.pry 
+     expect { cliInstance.list }.to output("Thank you and Goodbye!").to_stdout
     end
 
+    it "displays office details when valid office selected" do
+    	
+    end
 end
 
-#check that it retrives list 
-#check that it responds to user input
