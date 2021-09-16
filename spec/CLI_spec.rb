@@ -23,9 +23,8 @@ RSpec.describe Urgentcare::CLI do
 
     it "displays message if user exits" do 
      allow(cliInstance).to receive(:office_details).and_return("Office Details")
-     allow(cliInstance.list).to receive(:location).and_return("exit")
-    	binding.pry 
-     expect { cliInstance.list }.to output("Thank you and Goodbye!").to_stdout
+     allow(cliInstance).to receive(:user_input).and_return("exit")
+     expect { cliInstance.list }.to output(" \nThank you and Goodbye!\n").to_stdout
     end
 
     it "displays office details when valid office selected" do
