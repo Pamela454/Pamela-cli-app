@@ -39,13 +39,17 @@ class Urgentcare::CLI
     gets.chomp
   end
 
+  def input_to_i
+    user_input.to_i 
+  end
+
   def list
-    puts " "
-    location = user_input
+      puts " "
+      location = user_input
     if location == "Exit" ||location == "exit"
       puts "Thank you and Goodbye!"
     elsif
-      @index = location.to_i - 1
+      @index = input_to_i - 1   
       office_details
     else 
        puts "Invalid response"
@@ -53,7 +57,7 @@ class Urgentcare::CLI
   end
 
   def office_details
-    if @index != "Exit" ||@index != "exit"
+    if @index != "Exit" || @index != "exit"
       puts " "
       puts "---"
       puts "Office Name: #{@offices[@index].name}"

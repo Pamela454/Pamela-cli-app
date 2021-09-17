@@ -9,6 +9,13 @@ RSpec.describe Urgentcare::CLI do
 
 	let!(:cliInstance) {Urgentcare::CLI.new}
 	subject {Urgentcare::CLI.new}
+	let!(:office) {Urgentcare::Office}
+
+	before(:each) do
+      @index = 0
+      @new_array = []
+      @offices = @new_array << office.new("Worcester Greenwood St", "2:00 PM Friday, September 17 (EDT)  ", "(617) 804-6293 ", "https://www.carewellurgentcare.com/urgent-care-appointment-form-worcester-greenwood/")
+    end
 
     it "calls the welcome method" do
      expect(cliInstance).to receive(:welcome).once
@@ -28,7 +35,9 @@ RSpec.describe Urgentcare::CLI do
     end
 
     it "displays office details when valid office selected" do
-    	
+      allow(cliInstance).to receive(:list).and_return("List")
+      cliInstance.instance_variable_set(:@index, 0)
+      expect { cliInstance.office_details }.to output(a_string_starting_with(" \n---\n")).to_stdout
     end
 end
 
