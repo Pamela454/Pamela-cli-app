@@ -8,6 +8,8 @@ RSpec.describe Urgentcare::CLI do
 		@doc = Nokogiri::HTML.parse(
     	File.open("./spec/html_site.html"))
     	@get_page = @doc.inner_html
+    	@inner_page = Nokogiri::HTML(@get_page)
+    	@new_page = @inner_page.css('.centers-list')
 	end
 
     #get_page returns nil 
@@ -15,8 +17,15 @@ RSpec.describe Urgentcare::CLI do
 		expect(@get_page).to start_with("<html")
 	end
 
-	it 'gets clinic data' do
-		
+	it 'get_office_list returns html list of clinics' do 
+		allow(scraper).to receive(:get_appttime).and_return("@new_page")
+		scraper.get_office_list
+	end
+
+	it 'office_url calls new method with scraped url' do
+		allow(scraper).to receive(:get_appttime).and_return("New Time")
+		scraper.get_office_list
+		expect(scraper.get_appttime).to receive(url)
 	end
 
 	it 'gets current appointment time' do
