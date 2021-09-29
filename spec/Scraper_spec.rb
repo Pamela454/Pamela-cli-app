@@ -19,6 +19,11 @@ RSpec.describe Urgentcare::CLI do
 		expect(@get_page).to start_with("<html")
 	end
 
+	it 'get_clinic_site returns html from clinic site' do 
+		allow(scraper).to receive(:get_clinic_site).and_return("@js_doc")
+		scraper.get_clinic_site(@clinic_page)
+	end
+
 	it 'get_office_list returns html list of clinics' do 
 		allow(scraper).to receive(:get_appttime).and_return("@new_page")
 		scraper.get_office_list
