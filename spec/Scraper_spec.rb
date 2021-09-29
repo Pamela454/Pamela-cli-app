@@ -1,9 +1,10 @@
 require './lib/UrgentCare/Scraper.rb'
-require './spec/html_site.html'
 
 RSpec.describe Urgentcare::CLI do 
 
-	htnlfile = Nokogiri::HTML.parse(
+    let!(:scraper) { Urgentcare::Scraper.new }
+
+	htmlfile = Nokogiri::HTML.parse(
     File.open("./spec/html_site.html"))
 
 	it 'gets html from url' do
