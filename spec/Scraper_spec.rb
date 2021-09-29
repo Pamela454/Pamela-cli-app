@@ -10,6 +10,8 @@ RSpec.describe Urgentcare::CLI do
     	@get_page = @doc.inner_html
     	@inner_page = Nokogiri::HTML(@get_page)
     	@new_page = @inner_page.css('.centers-list')
+    	@clinic_page = Nokogiri::HTML.parse(
+    	File.open("./spec/clinic_site.html"))
 	end
 
     #get_page returns nil 
@@ -25,7 +27,7 @@ RSpec.describe Urgentcare::CLI do
 	it 'office_url calls new method with scraped url' do
 		allow(scraper).to receive(:get_appttime).and_return("New Time")
 		scraper.get_office_list
-		expect(scraper.get_appttime).to receive(url)
+		expect { scraper.get_appttime(@clinic_page) }.to output("No time available").to_stdout
 	end
 
 	it 'gets current appointment time' do
@@ -37,8 +39,3 @@ RSpec.describe Urgentcare::CLI do
 	end
 
 end
-
-#test that nokogiri can get html from fake page 
-#test get clinics can get data
-#test get waittime can get data  
-#test that an office can be made from make_office function using fake html data
