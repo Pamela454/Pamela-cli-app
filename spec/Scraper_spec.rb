@@ -29,14 +29,10 @@ RSpec.describe Urgentcare::CLI do
 		scraper.get_office_list
 	end
 
-	it 'office_url calls new method with scraped url' do
-		allow(scraper).to receive(:get_appttime).and_return("New Time")
-		scraper.get_office_list
-		expect { scraper.get_appttime(@clinic_page) }.to output("No time available").to_stdout
-	end
 
 	it 'gets current appointment time' do
-		
+		allow(scraper).to receive(:get_appttime).and_return("@js_doc")
+		scraper.get_appttime 
 	end
 
 	it 'creates a new office object' do 
