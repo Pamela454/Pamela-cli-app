@@ -44,9 +44,12 @@ class Urgentcare::Scraper
     end
   end
 
-  def get_appttime(url) #retrieve waittime and add to new office model 
+  def get_clinic_site(url) 
     @@browser.goto(url) 
     js_doc = @@browser.iframe.wait_until(&:present?) 
+  end
+
+  def get_appttime(js_doc) #retrieve waittime and add to new office model 
     if  js_doc.button(data_id: "timeSelector").exists? 
       @wait_time = js_doc.button(data_id: "timeSelector").text.gsub("\n", " ")
     elsif js_doc.element(tag_name: 'h3').exists?  
