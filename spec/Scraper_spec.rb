@@ -4,11 +4,15 @@ RSpec.describe Urgentcare::CLI do
 
     let!(:scraper) { Urgentcare::Scraper.new }
 
-	htmlfile = Nokogiri::HTML.parse(
-    File.open("./spec/html_site.html"))
+    before(:each) do
+		@doc = Nokogiri::HTML.parse(
+    	File.open("./spec/html_site.html"))
+    	@get_page = @doc.inner_html
+	end
 
-	it 'gets html from url' do
-		
+    #get_page returns nil 
+	it 'mocked page returns html from url' do
+		expect(@get_page).to start_with("<html")
 	end
 
 	it 'gets clinic data' do
