@@ -38,7 +38,7 @@ class Urgentcare::Scraper
         else
           url = office_details.css('a')[2][name="href"]
         end
-        get_appttime(url)
+        get_clinic_site(url)
         @off = @office.new 
         make_office(office_details, index) 
     end
