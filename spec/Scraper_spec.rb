@@ -35,8 +35,9 @@ RSpec.describe Urgentcare::CLI do
 		scraper.get_appttime 
 	end
 
-	it 'creates a new office object' do 
-
-	end
+	#it 'creates a new office object' do 
+		#allow(scraper).to receive(:make_office).and_return("@off.name")
+		#scraper.office_url
+	#end
 
 end
