@@ -59,6 +59,8 @@ class Urgentcare::CLI
   def office_details
     if @index != "Exit" || @index != "exit"
       puts " "
+      puts " "
+      puts " "
       puts "---"
       puts "Office Name: #{@offices[@index].name}"
       puts "Office Number: #{@offices[@index].phone_number}"
@@ -66,10 +68,15 @@ class Urgentcare::CLI
       puts "Office Next Available Appointment: #{@offices[@index].next_available}"
       puts "---"
       puts " "
+      puts " "
+      puts " "
 
     else
       puts "No results found. Please try again."
     end
+      puts " "
+      puts " "
+      puts " "
       puts "Would you like to select another office from the list?"
       puts " "
       @offices.each_with_index do |office, i|
