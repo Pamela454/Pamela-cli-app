@@ -51,9 +51,9 @@ class Urgentcare::Scraper
 
   def get_appttime #retrieve waittime and add to new office model 
     if  @js_doc.button(data_id: "timeSelector").exists? 
-      @wait_time = js_doc.button(data_id: "timeSelector").text.gsub("\n", " ")
-    elsif js_doc.element(tag_name: 'h3').exists?  
-      @wait_time = js_doc.element(tag_name: 'h3').text 
+      @wait_time = @js_doc.button(data_id: "timeSelector").text.gsub("\n", " ")
+    elsif @js_doc.element(tag_name: 'h3').exists?  
+      @wait_time = @js_doc.element(tag_name: 'h3').text 
     else
       @wait_time = "No time available"
     end
@@ -66,6 +66,7 @@ class Urgentcare::Scraper
     else
       @off.url = office_details.css('a')[2][name="href"]
     end
+    get_appttime
     @off.next_available = @wait_time
     @off.phone_number = office_details.css('a[href]').text.gsub("Get DirectionsBook Urgent Care Appointment", " ")
   end
