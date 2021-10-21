@@ -44,7 +44,8 @@ class Urgentcare::CLI
       puts "Thank you and Goodbye!"
     elsif location != "Exit" || location != "exit"
       location = location.to_i 
-      @index = location - 1
+      $index = location - 1
+      @scraper.get_clinic_site
       office_details
     else 
        puts "Invalid response"
@@ -52,15 +53,15 @@ class Urgentcare::CLI
   end
 
   def office_details
-    if @index != "Exit" || @index != "exit"
+    if $index != "Exit" || $index != "exit"
       puts " "
       puts " "
       puts " "
       puts "---"
-      puts "Office Name: #{@offices[@index].name}"
-      puts "Office Number: #{@offices[@index].phone_number}"
-      puts "Office URL: #{@offices[@index].url}"
-      puts "Office Next Available Appointment: #{@offices[@index].next_available}"
+      puts "Office Name: #{@offices[$index].name}"
+      puts "Office Number: #{@offices[$index].phone_number}"
+      puts "Office URL: #{@offices[$index].url}"
+      puts "Office Next Available Appointment: #{@offices[$index].next_available}"
       puts "---"
       puts " "
       puts " "
