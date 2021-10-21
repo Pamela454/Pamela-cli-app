@@ -11,4 +11,5 @@ gem 'project'
 gem 'capybara'
 gem 'webdrivers'
 gem 'watir-performance', '~> 0.9.4'
+gem "tty-prompt"
 
