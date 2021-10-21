@@ -22,6 +22,7 @@ class Urgentcare::CLI
     puts " "
     puts " "
     puts " "
+    loading_message 
     office_list 
   end
 
@@ -29,6 +30,7 @@ class Urgentcare::CLI
     @scraper.get_office_list
     puts "Please choose a number from the following list for details on
     an Urgent Care location."
+    puts " "
     @offices.each_with_index do |office, i|
       puts "#{i + 1}. #{office.name}"
     end
@@ -79,6 +81,13 @@ class Urgentcare::CLI
       puts "If not, please type exit."
       puts " "
       list
+  end
+
+  def loading_message
+      puts " "
+      puts "Retrieving list of offices...."
+      puts "Loading......"
+      puts " "
   end
 
 end
