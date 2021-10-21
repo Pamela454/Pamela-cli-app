@@ -45,6 +45,7 @@ class Urgentcare::CLI
     elsif location != "Exit" || location != "exit"
       location = location.to_i 
       $index = location - 1
+      loading_message
       @scraper.get_clinic_site
       office_details
     else 
@@ -86,8 +87,9 @@ class Urgentcare::CLI
 
   def loading_message
       puts " "
-      puts "Retrieving list of offices...."
+      puts "Retrieving data...."
       puts "Loading......"
+      puts "............."
       puts " "
   end
 
