@@ -2,7 +2,13 @@
 
 *This developer is currently seeking a job. Please reach out to pamela@torres-rocca.com if interested*
 
-CLI Urgent Care is a Command Line Interface application that returns current wait times at Carewell Urgent Care centers for towns in Massachusetts. COVID-19 testing available at appointments at all locations. Urgent care is usually needed quickly but not serious enough to require an emergency room visit. This uses the Nokogiri and Watir gems to scrape information from the website. 
+CLI Urgent Care is a Command Line Interface application that returns current wait times at Carewell Urgent Care centers for towns in Massachusetts. COVID-19 testing is available at appointments at all locations. Urgent care is usually needed quickly but not serious enough to require an emergency room visit. This uses the Nokogiri and Watir gems to scrape data from the website. 
+
+## Prerequisites
+
+This application requires the following:
+ The latest version of Ruby 3.1.0
+
 
 ## Installation
 
@@ -22,7 +28,7 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Run ./bin/Urgentcare to start the application. Select a town number from the menu to see more detailed information about that location. The detailed information gives the name, phone number, address, and earliest available appointment time at that location. 
+TODO: Run ./bin/Urgentcare to start the application. Enter a town number from the menu in the terminal to see more detailed information about that location. The detailed information gives the name, phone number, address, and earliest available appointment time at that location. 
 
 ## Development
 
@@ -33,6 +39,10 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/Pamela454/Pamela-cli-app. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+
+## Contributers 
+Thanks to the following who have contributed:
+  # Hernando Torres-Rocca
 
 ## License
 
