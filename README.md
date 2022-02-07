@@ -7,7 +7,7 @@ CLI Urgent Care is a Command Line Interface application that returns current wai
 ## Prerequisites
 
 This application requires the following:
- The latest version of Ruby 3.1.0
+  Ruby 2.5.6 or later
 
 
 ## Installation
