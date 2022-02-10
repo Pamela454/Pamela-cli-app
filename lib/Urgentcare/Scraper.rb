@@ -41,7 +41,6 @@ class Urgentcare::Scraper
         else
           @@url << office_details.css('a')[2][name="href"]
         end
-        #get_clinic_site
         @off = @office.new 
         make_office(office_details) 
     end
@@ -60,8 +59,6 @@ class Urgentcare::Scraper
     else
       @off.url = office_details.css('a')[2][name="href"]
     end
-    #get_appttime
-    #@off.next_available = @wait_time
     @off.phone_number = office_details.css('a[href]').text.gsub("Get DirectionsBook Urgent Care Appointment", " ")
   end
 

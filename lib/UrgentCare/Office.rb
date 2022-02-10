@@ -16,8 +16,4 @@ class Urgentcare::Office
     @@all
   end
 
-  #def self.clear
-    #self.class.all.clear #abstract away use of variable 
-  #end 
-
 end
