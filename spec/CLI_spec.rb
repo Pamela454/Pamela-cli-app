@@ -1,5 +1,6 @@
 require './lib/UrgentCare/CLI.rb'
 require 'stringio'
+require 'deep-cover'
 
 #use test doubles so internet conn not necessary 
 #double - simple object with preprogrammed expectations and responses as preparation for calls it will receive

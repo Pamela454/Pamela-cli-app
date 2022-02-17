@@ -1,5 +1,6 @@
 require "bundler/setup"
 require "Urgentcare"
+require 'deep-cover'
 
 
 RSpec.configure do |config|

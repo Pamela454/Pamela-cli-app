@@ -1,4 +1,5 @@
 require './lib/UrgentCare/Office.rb'
+require 'deep-cover'
 
 RSpec.describe Urgentcare::Office do
 
