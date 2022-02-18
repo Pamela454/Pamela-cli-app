@@ -63,16 +63,13 @@ class Urgentcare::Scraper
   end
 
   def get_appttime #retrieve waittime and add to new office model 
-    binding.pry
    iframe_info = Nokogiri::HTML(@js_doc.html) 
     if iframe_info.css('div.time-slots')
       @wait_day = iframe_info.css('div.d-flex.d-md-none.header').text
-      binding.pry
       @wait_time = iframe_info.css('div.time-slot.selected').text
     else
       @wait_time = "No time available"
     end
-    binding.pry
       @office.all[$index].next_available = "#{@wait_day} #{@wait_time}"
   end
 

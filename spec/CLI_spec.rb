@@ -1,6 +1,6 @@
 require './lib/UrgentCare/CLI.rb'
 require 'stringio'
-require 'deep-cover'
+#require 'deep-cover'
 
 #use test doubles so internet conn not necessary 
 #double - simple object with preprogrammed expectations and responses as preparation for calls it will receive
@@ -25,7 +25,7 @@ RSpec.describe Urgentcare::CLI do
     it "prints a welcome message" do 
      allow(cliInstance).to receive(:office_list).and_return("An office list")
      expect(cliInstance).to receive(:office_list).once 
-     expect { cliInstance.welcome }.to output(" \n \nWelcome to the Urgent Care CLI\n \n \n \n").to_stdout 
+     expect { cliInstance.welcome }.to output(" \n \nWelcome to the Urgent Care CLI\n \n \n \n \nRetrieving data....\nLoading......\n.............\n \n").to_stdout 
     end
 
     it "displays message if user exits" do 

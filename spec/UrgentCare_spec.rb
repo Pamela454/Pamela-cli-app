@@ -1,5 +1,5 @@
 require './lib/UrgentCare/Office.rb'
-require 'deep-cover'
+#require 'deep-cover'
 
 #test stubs help with inputs
 #mock objects help with outputs 

@@ -1,5 +1,5 @@
 require './lib/UrgentCare/Scraper.rb'
-require 'deep-cover'
+#require 'deep-cover'
 
 RSpec.describe Urgentcare::CLI do 
 
