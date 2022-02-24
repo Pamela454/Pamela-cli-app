@@ -45,7 +45,7 @@ Bug reports and pull requests are welcome on GitHub at https://github.com/Pamela
 
 ## Contributers 
 Thanks to the following who have contributed:
-  # Hernando Torres-Rocca
+  Hernando Torres-Rocca
 
 ## License
 
