@@ -39,7 +39,7 @@ class Urgentcare::CLI
 
   def list
       puts " "
-      location = gets.chomp 
+      location = $stdin.gets.chomp 
     if location == "Exit" ||location == "exit"
       puts "Thank you and Goodbye!"
     elsif location != "Exit" || location != "exit"

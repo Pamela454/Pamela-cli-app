@@ -12,8 +12,8 @@ RSpec.describe Urgentcare::CLI do
 	let!(:office) {Urgentcare::Office}
 
 	before(:each) do
-      @index = 0
-      @new_array = []                
+      $index = 0
+      @new_array = []  
       @offices = @new_array << office.new("Worcester Greenwood St", "https://www.carewellurgentcare.com/urgent-care-appointment-form-worcester-greenwood/", "2:00 PM Friday, September 17 (EDT)  ", "(617) 804-6293 ")
     end
 
@@ -37,7 +37,6 @@ RSpec.describe Urgentcare::CLI do
     it "displays office details when valid office selected" do
       allow(cliInstance).to receive(:list).and_return("List")
       cliInstance.instance_variable_set(:@index, 0)
-      $index = 0
       expect { cliInstance.office_details }.to output(a_string_starting_with(" \n \n \n---\nOffice Name: Worcester Greenwood St\nOffice Number: (617) 804-6293 \nOffice URL: https://www.carewellurgentcare.com/urgent-care-appointment-form-worcester-greenwood/\nOffice Next Available Appointment: 2:00 PM Friday, September 17 (EDT)")).to_stdout
     end
 end
