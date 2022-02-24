@@ -25,6 +25,8 @@ And then execute:
 Or install it yourself as:
 
     $ gem install UrgentcareCLI
+    
+    <img width="649" alt="Screen Shot 2022-02-24 at 10 18 50 AM" src="https://user-images.githubusercontent.com/11492782/155553587-82ace535-29ab-4391-9e92-33da62496e3a.png">
 
 ## Usage
 
