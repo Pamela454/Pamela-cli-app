@@ -1,5 +1,11 @@
 {
   "dependencies": {
     "selenium-webdriver": "*"
+  },
+  "devDependencies": {
+    "gh-pages": "^3.2.3"
+  },
+  "scripts": {
+    "deploy": "npm run build && gh-pages -d dist"
   }
 }
