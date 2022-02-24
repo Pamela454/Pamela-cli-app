@@ -1,7 +1,7 @@
 
 lib = File.expand_path("../lib", )
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require "./lib/Urgentcare/version"
+require "./lib/UrgentCare/version"
 
 Gem::Specification.new do |spec|
   spec.name          = "UrgentcareCLI"
