@@ -36,13 +36,9 @@ class Urgentcare::Scraper
 
   def office_url 
     @new_page.each do |office_details|  #does not create additional objects. returns original object
-        if office_details.css('a').length > 3
-          @@url << office_details.css('a')[3][name="href"]
-        else
-          @@url << office_details.css('a')[2][name="href"]
-        end
-        @off = @office.new 
-        make_office(office_details) 
+        @@url << office_details.css('a')[2][name="href"]
+        @office_details = office_details
+        make_office
     end
   end
 
@@ -52,14 +48,11 @@ class Urgentcare::Scraper
     get_appttime_date
   end
 
-  def make_office(office_details)
-      @off.name = office_details.css('h2').text
-    if office_details.css('a').length > 3
-      @off.url = office_details.css('a')[3][name="href"]
-    else
-      @off.url = office_details.css('a')[2][name="href"]
-    end
-    @off.phone_number = office_details.css('a[href]').text.gsub("Get DirectionsBook Urgent Care Appointment", " ")
+  def make_office
+      @off = @office.new 
+      @off.name = @office_details.css('h2').text
+      @off.url = @office_details.css('a')[2][name="href"]
+      @off.phone_number = @office_details.css('a[href]').text.gsub("Get DirectionsBook Urgent Care Appointment", " ")
   end
 
   def get_appttime_date #retrieve waittime and add to new office model 
