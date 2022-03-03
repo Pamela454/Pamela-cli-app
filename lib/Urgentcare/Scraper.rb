@@ -36,9 +36,9 @@ class Urgentcare::Scraper
 
   def office_url 
     @new_page.each do |office_details|  #does not create additional objects. returns original object
-        @@url << office_details.css('a')[2][name="href"]
-        @office_details = office_details
-        make_office
+      @@url << office_details.css('a')[2][name="href"]
+      @office_details = office_details
+      make_office
     end
   end
 
