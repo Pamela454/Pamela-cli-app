@@ -34,12 +34,12 @@ class Urgentcare::CLI
     @offices.each_with_index do |office, i|
       puts "#{i + 1}. #{office.name}"
     end
-    list
-  end
+     list
+    end
 
   def list
-      puts " "
-      location = $stdin.gets.chomp 
+    puts " "
+    location = $stdin.gets.chomp 
     if location == "Exit" ||location == "exit"
       puts "Thank you and Goodbye!"
     elsif location != "Exit" || location != "exit"
@@ -49,7 +49,7 @@ class Urgentcare::CLI
       @scraper.get_clinic_site
       office_details
     else 
-       puts "Invalid response"
+      puts "Invalid response"
     end
   end
 
@@ -76,21 +76,21 @@ class Urgentcare::CLI
       puts " "
       puts "Would you like to select another office from the list?"
       puts " "
-      @offices.each_with_index do |office, i|
-        puts "#{i + 1}. #{office.name}"
-      end
+    @offices.each_with_index do |office, i|
+      puts "#{i + 1}. #{office.name}"
+    end
       puts " "
       puts "If not, please type exit."
       puts " "
-      list
+    list
   end
 
   def loading_message
-      puts " "
-      puts "Retrieving data...."
-      puts "Loading......"
-      puts "............."
-      puts " "
+    puts " "
+    puts "Retrieving data...."
+    puts "Loading......"
+    puts "............."
+    puts " "
   end
 
 end
