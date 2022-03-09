@@ -4,7 +4,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require "./lib/UrgentCare/version"
 
 Gem::Specification.new do |spec|
-  spec.name          = "Urgentcare"
+  spec.name          = "UrgentcareCLI"
   spec.version       = Urgentcare::VERSION
   spec.authors       = ["PamelaTorres-Rocca"]
   spec.email         = ["pamela@torres-rocca.com"]
