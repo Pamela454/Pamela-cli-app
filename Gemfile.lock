@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    Urgentcare (0.2.3)
+    UrgentcareCLI (0.2.3)
       bundler (>= 2.2.10)
       nokogiri (>= 1.11.4)
 
@@ -24,9 +24,9 @@ GEM
     gem-release (2.2.2)
     method_source (1.0.0)
     mini_mime (1.1.2)
-    mini_portile2 (2.6.1)
-    nokogiri (1.12.5)
-      mini_portile2 (~> 2.6.1)
+    mini_portile2 (2.8.0)
+    nokogiri (1.13.4)
+      mini_portile2 (~> 2.8.0)
       racc (~> 1.4)
     pastel (0.8.0)
       tty-color (~> 0.5)
@@ -87,7 +87,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  Urgentcare!
+  UrgentcareCLI!
   capybara
   gem-release
   nokogiri
