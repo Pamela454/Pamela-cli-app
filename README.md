@@ -20,7 +20,7 @@ gem 'UrgentcareCLI', '~> 0.2.3'
 
 And then execute:
 
-    $ gem install Urgentcare
+    $ gem install UrgentcareCLI
     
 ## Usage
 
