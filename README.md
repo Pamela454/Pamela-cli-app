@@ -15,7 +15,7 @@ This application requires the following:
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'UrgentcareCLI', '~> 0.2.3'
+gem 'UrgentcareCLI', '~> 0.2.4'
 ```
 
 And then execute:
@@ -27,7 +27,7 @@ And then execute:
 <img width="649" alt="Screen Shot 2022-02-24 at 10 18 50 AM" src="https://user-images.githubusercontent.com/11492782/155553587-82ace535-29ab-4391-9e92-33da62496e3a.png">
 
 
-TODO: Run Urgentcare to start the application. Enter a town number from the menu in the terminal to see more detailed information about that location. The detailed information gives the name, phone number, address, and earliest available appointment time at that location. 
+TODO: Run bundle exec Urgentcare to start the application. Enter a town number from the menu in the terminal to see more detailed information about that location. The detailed information gives the name, phone number, address, and earliest available appointment time at that location. 
 
 ## Development
 
