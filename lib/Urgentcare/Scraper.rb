@@ -54,7 +54,7 @@ class Urgentcare::Scraper
     @off = @office.new 
     @off.name = @office_details.css('h2').text
     @off.url = @office_details.css('a')[2][name="href"]
-    @off.phone_number = @office_details.css('a[href]').text.gsub("Get DirectionsBook Urgent Care Appointment", " ")
+    @off.phone_number = @office_details.css('a[href]').text.gsub("Get DirectionsSave Your Spot in Line", "")
   end
 
   def get_appttime_date #retrieve waittime and add to new office model 
