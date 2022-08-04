@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    UrgentcareCLI (0.2.3)
+    UrgentcareCLI (0.2.4)
       bundler (>= 2.2.10)
       nokogiri (>= 1.11.4)
 
