@@ -1,3 +1,5 @@
+require 'webdrivers'
+
 class Urgentcare::Scraper
 
   def initialize(office = Urgentcare::Office, scraper: Urgentcare::Scraper)
