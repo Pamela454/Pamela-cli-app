@@ -26,7 +26,9 @@ GEM
     matrix (0.4.2)
     method_source (1.0.0)
     mini_mime (1.1.2)
-    nokogiri (1.13.8-x86_64-darwin)
+    nokogiri (1.13.9-x86_64-darwin)
+      racc (~> 1.4)
+    nokogiri (1.13.9-x86_64-linux)
       racc (~> 1.4)
     pastel (0.8.0)
       tty-color (~> 0.5)
@@ -87,6 +89,7 @@ GEM
 
 PLATFORMS
   x86_64-darwin-15
+  x86_64-linux
 
 DEPENDENCIES
   UrgentcareCLI!
