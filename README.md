@@ -15,7 +15,7 @@ This application requires the following:
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'UrgentcareCLI', '~> 0.2.4'
+gem 'UrgentcareCLI', '~> 0.2.5'
 ```
 
 And then execute:
