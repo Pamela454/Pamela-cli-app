@@ -10,6 +10,7 @@ RSpec.describe Urgentcare::CLI do
 
   let!(:cliInstance) {Urgentcare::CLI.new}
 	let!(:office) {Urgentcare::Office}
+  let(:input) { StringIO.new('exit') }
 
 	before(:each) do
     $index = 0
@@ -29,8 +30,9 @@ RSpec.describe Urgentcare::CLI do
   end
 
   it "displays message if user exits" do 
+    $stdin = input
     allow(cliInstance).to receive(:office_details).and_return("Office Details")
-    allow(cliInstance).to receive(:user_input).and_return("exit")
+    allow(cliInstance).to receive(:input).and_return("exit")
     expect { cliInstance.list }.to output(" \nThank you and Goodbye!\n").to_stdout
   end
 

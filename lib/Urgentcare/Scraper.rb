@@ -32,29 +32,23 @@ class Urgentcare::Scraper
   end
 
   def get_office_list #called first in CLI
-    @new_page = get_page.css('.centers-list')
+    @new_page = get_page.css('p')[2..]
     office_url
   end
 
   def office_url 
     @new_page.each do |office_details|  #does not create additional objects. returns original object
-      @@url << office_details.css('a')[2][name="href"]
+      @@url << office_details
       @office_details = office_details
       make_office
     end
   end
 
-  def get_clinic_site 
-    @@browser.goto(@@url[$index]) 
-    @js_doc = @@browser.iframe.wait_until(&:present?) 
-    get_appttime_date
-  end
-
   def make_office
     @off = @office.new 
-    @off.name = @office_details.css('h2').text
-    @off.url = @office_details.css('a')[2][name="href"]
-    @off.phone_number = @office_details.css('a[href]').text.gsub("Get DirectionsSave Your Spot in Line", "")
+    @off.name = @office_details.css('a')[0].text
+    @off.url = @office_details.css('a')[0][name="href"]
+    @off.phone_number = @office_details.css('a[href]')[1].text
   end
 
   def get_appttime_date #retrieve waittime and add to new office model 

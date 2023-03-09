@@ -46,7 +46,6 @@ class Urgentcare::CLI
       location = location.to_i 
       $index = location - 1
       loading_message
-      @scraper.get_clinic_site
       office_details
     else 
       puts "Invalid response"

@@ -87,6 +87,7 @@ GEM
 
 PLATFORMS
   x86_64-darwin-15
+  x86_64-darwin-20
 
 DEPENDENCIES
   UrgentcareCLI!
