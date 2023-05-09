@@ -16,7 +16,7 @@ class Urgentcare::Scraper
   end
 
   @@client = Selenium::WebDriver::Remote::Http::Default.new #class variable 
-  @@client.read_timeout = 3000 # seconds – default is 60
+  @@client.read_timeout = 6000 # seconds – default is 60
 
   @@browser = Watir::Browser.new :chrome, headless: true, http_client: @@client
   send_cmd(@@browser.driver, "Network.setBlockedURLs", {'urls': ["*careuc.netmng.com*"]}) #url pending when page loads
@@ -32,35 +32,48 @@ class Urgentcare::Scraper
   end
 
   def get_office_list #called first in CLI
-    @new_page = get_page.css('p')[2..]
+    @new_page = get_page.css('div.centers-list')
     office_url
   end
 
   def office_url 
     @new_page.each do |office_details|  #does not create additional objects. returns original object
-      @@url << office_details
       @office_details = office_details
       make_office
     end
   end
 
+  def get_clinic_site 
+    if @@url[$index].url != "Not available"
+      @@browser.goto(@@url[$index].url)
+      @js_doc = @@browser.iframe.wait_until(&:present?)
+      get_appttime_date
+    else
+      get_appttime_date
+    end
+  end
+
   def make_office
     @off = @office.new 
-    @off.name = @office_details.css('a')[0].text
-    @off.url = @office_details.css('a')[0][name="href"]
-    @off.phone_number = @office_details.css('a[href]')[1].text
+    @off.name = @office_details.css('div.center-name').text
+    if @office_details.css('div.center-appointment').css('a').count > 1
+      @off.url = @office_details.css('div.center-appointment').css('a[href]')[1].values[1]
+    else
+      @off.url = "Not available"
+    end
+    @off.phone_number = @office_details.css('div.center-address').css('a').text
+    @@url << @off
   end
 
   def get_appttime_date #retrieve waittime and add to new office model 
-    sleep(1);
-    iframe_info = Nokogiri::HTML(@js_doc.html) 
-    if !iframe_info.css('div.time-slots').empty?
-      @wait_day = iframe_info.css('div.d-flex.d-md-none.header').text
-      @wait_time = iframe_info.css('div.time-slot.selected').text
-      @office.all[$index].next_available = "#{@wait_day} #{@wait_time}"
-    else   
-      @wait_time = "Walk-in only due to staffing shortages"
-      @office.all[$index].next_available = "#{@wait_time}"
+    sleep(5);
+    if @@url[$index].url != "Not available"
+      iframe_info = Nokogiri::HTML(@js_doc.html) 
+      @wait_day = iframe_info.css('div.calendar').css('div.header').text
+      @wait_time = iframe_info.css('div.row').css('div.time-slot')[0].text
+      @@url[$index].next_available = "#{@wait_day} #{@wait_time}"
+    else
+      @@url[$index].next_available = "Not available"
     end
   end
 

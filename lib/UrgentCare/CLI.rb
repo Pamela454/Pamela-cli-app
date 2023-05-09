@@ -26,6 +26,14 @@ class Urgentcare::CLI
     office_list 
   end
 
+  def loading_message
+    puts " "
+    puts "Retrieving data...."
+    puts "Loading......"
+    puts "............."
+    puts " "
+  end
+
   def office_list
     @scraper.get_office_list
     puts "Please choose a number from the following list for details on
@@ -35,7 +43,7 @@ class Urgentcare::CLI
       puts "#{i + 1}. #{office.name}"
     end
      list
-    end
+  end
 
   def list
     puts " "
@@ -46,6 +54,7 @@ class Urgentcare::CLI
       location = location.to_i 
       $index = location - 1
       loading_message
+      @scraper.get_clinic_site
       office_details
     else 
       puts "Invalid response"
@@ -60,7 +69,7 @@ class Urgentcare::CLI
       puts "---"
       puts "Office Name: #{@offices[$index].name}"
       puts "Office Number: #{@offices[$index].phone_number}"
-      puts "Office URL: #{@offices[$index].url}"
+      puts "Appointment URL: #{@offices[$index].url}"
       puts "Office Next Available Appointment: #{@offices[$index].next_available}"
       puts "---"
       puts " "
@@ -82,14 +91,6 @@ class Urgentcare::CLI
       puts "If not, please type exit."
       puts " "
     list
-  end
-
-  def loading_message
-    puts " "
-    puts "Retrieving data...."
-    puts "Loading......"
-    puts "............."
-    puts " "
   end
 
 end

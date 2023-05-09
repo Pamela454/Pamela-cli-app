@@ -2,7 +2,7 @@ require 'pry'
 require 'nokogiri'
 require 'open-uri'
 require 'watir'
-require 'watir-performance'
+#require 'watir-performance'
 require 'capybara'
 
 
